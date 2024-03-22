@@ -47,7 +47,7 @@ services:
       - WEBUI_PORT=8085
     volumes:
       - /home/coomshack/docker/arr-stack/qbittorrent:/config
-      - /home/coomshack/data/torrents:/downloads
+      - /home/coomshack/data/torrents:/data/torrents/
     depends_on:
       - gluetun
     restart: always
