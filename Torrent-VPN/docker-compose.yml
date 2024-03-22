@@ -70,7 +70,6 @@ services:
       - /home/coomshack/docker/arr-stack/radarr:/config
       - /home/coomshack/data:/data
 
-
   sonarr:
     image: lscr.io/linuxserver/sonarr:latest
     container_name: sonarr
@@ -119,13 +118,14 @@ services:
     container_name: jellyseerr 
     network_mode: "service:gluetun"
     hostname: jellyseerr 
-    networks: 
-      - mediarr 
     user: 1000:1000 
     environment: 
-      - TZ=Africa/Casablanca 
+      - TZ=Europe/Copenhagen
     ports: 
       - 5055:5055 
     volumes: 
-      - ./configs/mediarr/jellyseerr:/app/config 
+      - /home/coomshack/data/jellyseerr:/app/config 
     restart: unless-stopped 
+    depends_on: 
+      - sonarr 
+      - radarr
